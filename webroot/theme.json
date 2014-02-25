@@ -1,0 +1,17 @@
+{
+    "name" : "Advanced",
+    "description" : "Bootstrap 3 admin template",
+    "screenshot" : "screenshot.svg",
+
+    "author" : "Lukas Strassel",
+    "authorEmail" : "lukasstrassel@googlemail.com",
+    "authorUrl" : "http://sakulstra.org",
+
+    "menus" : [
+        "main"
+    ],
+
+    "regions" : [
+        "right"
+    ]
+}
