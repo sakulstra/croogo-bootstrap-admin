@@ -1,0 +1,90 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Move down content because we have a fixed navbar that is 50px tall */
+/* Hide for mobile, show later */
+/* line 2, sass/_nav.scss */
+.sidebar {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  /* line 6, sass/_nav.scss */
+  .sidebar {
+    position: fixed;
+    top: 51px;
+    bottom: 51px;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* Scrollable contents if viewport is shorter than content. */
+    background-color: whitesmoke;
+    border-right: 1px solid #eee;
+  }
+}
+/* Sidebar navigation */
+/* line 22, sass/_nav.scss */
+.nav-sidebar {
+  margin-right: -21px;
+  /* 20px padding + 1px border */
+  margin-bottom: 20px;
+  margin-left: -20px;
+}
+
+/* line 27, sass/_nav.scss */
+.nav-sidebar > li > a {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+/* line 31, sass/_nav.scss */
+.nav-sidebar > .active > a {
+  color: #fff;
+  background-color: #428bca;
+}
+
+/* line 35, sass/_nav.scss */
+.nav-sidebar > li > ul > li {
+  background-color: #e8e8e8;
+}
+/* line 37, sass/_nav.scss */
+.nav-sidebar > li > ul > li a {
+  padding-left: 40px;
+}
+/* line 40, sass/_nav.scss */
+.nav-sidebar > li > ul > li > ul li {
+  background-color: gainsboro;
+}
+/* line 42, sass/_nav.scss */
+.nav-sidebar > li > ul > li > ul li a {
+  padding-left: 60px;
+}
+
+/* line 9, sass/admin.scss */
+body {
+  padding-top: 50px;
+}
+
+/*
+ * Main content
+ */
+/* line 17, sass/admin.scss */
+.main {
+  padding: 20px;
+}
+
+@media (min-width: 768px) {
+  /* line 21, sass/admin.scss */
+  .main {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+/* line 26, sass/admin.scss */
+.main .page-header {
+  margin-top: 0;
+}
