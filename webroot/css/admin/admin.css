@@ -49,17 +49,51 @@
 
 /* line 35, sass/_nav.scss */
 .nav-sidebar > li > ul > li {
+  position: relative;
   background-color: #e8e8e8;
 }
-/* line 37, sass/_nav.scss */
+/* line 38, sass/_nav.scss */
+.nav-sidebar > li > ul > li:before {
+  border-top: 1px solid darkgrey;
+  content: '';
+  display: block;
+  width: 8px;
+  left: 25px;
+  top: 20px;
+  position: absolute;
+}
+/* line 47, sass/_nav.scss */
+.nav-sidebar > li > ul > li:after {
+  top: 0;
+  border-left: 1px solid darkgrey;
+  content: '';
+  display: block;
+  height: 40px;
+  left: 25px;
+  position: absolute;
+}
+/* line 56, sass/_nav.scss */
+.nav-sidebar > li > ul > li:last-child:after {
+  top: 0;
+  border-left: 1px solid darkgrey;
+  border-bottom: 1px solid darkgrey;
+  border-bottom-left-radius: 50%;
+  content: '';
+  display: block;
+  height: 40px;
+  width: 40px;
+  left: 25px;
+  position: absolute;
+}
+/* line 68, sass/_nav.scss */
 .nav-sidebar > li > ul > li a {
   padding-left: 40px;
 }
-/* line 40, sass/_nav.scss */
+/* line 71, sass/_nav.scss */
 .nav-sidebar > li > ul > li > ul li {
   background-color: gainsboro;
 }
-/* line 42, sass/_nav.scss */
+/* line 73, sass/_nav.scss */
 .nav-sidebar > li > ul > li > ul li a {
   padding-left: 60px;
 }

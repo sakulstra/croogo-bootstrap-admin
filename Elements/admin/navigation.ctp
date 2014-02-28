@@ -1,3 +1,3 @@
 <?php
-    echo $this->Croogo->menuTree(CroogoNav::items());
+    echo $this->Croogo->adminMenus(CroogoNav::items(),array('data-target'=>true));
 ?>

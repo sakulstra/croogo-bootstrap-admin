@@ -23,18 +23,38 @@ $dashboardUrl = array(
                 <?php
                 echo $this->Croogo->adminMenus(CroogoNav::items('top-left'), array(
                     //'type' => 'dropdown',
-                    'htmlAttributes' => array(
-                        'id' => 'top-left-menu',
-                        'class' => 'nav navbar-nav navbar-left',
-                    ),
+                    'root' => array(
+                        'ul'=>array(
+                            'id' => 'top-left-menu',
+                            'class' => 'nav navbar-nav navbar-left'
+                        )
+                    )
                 ));
                 if ($this->Session->read('Auth.User.id')){
                     echo $this->Croogo->adminMenus(CroogoNav::items('top-right'), array(
-                        'type' => 'dropdown',
                         'htmlAttributes' => array(
                             'id' => 'top-right-menu',
                             'class' => 'nav navbar-nav navbar-right',
                         ),
+                        'root' => array(
+                            'ul'=>array(
+                                'id' => 'top-right-menu',
+                                'class' => 'nav navbar-nav navbar-right',
+                            ),
+                            'a' => array(
+                                'class' => 'dropdown-toggle',
+                                'data-toggle' => 'dropdown'
+                            ),
+                            'li' => array(
+                                'class'=>'dropdown'
+                            )
+                        ),
+                        'leaf' => array(
+                            'ul' => array(
+                                'class' => 'dropdown-menu dropdown-features',
+                                'role' => 'menu'
+                            )
+                        )
                     ));
                 }
                 ?>
