@@ -60,6 +60,15 @@ class CroogoHelper extends AppHelper {
 		return $this->_CroogoStatus->statuses();
 	}
 
+    public function getFromIconList($name){
+        $iconList = array(
+            'view' => array('icon' => 'search', 'tooltip' => __d('croogo', 'View links')),
+            'edit' => array('icon' => 'pencil', 'tooltip' => __d('croogo', 'Edit this item')),
+            'delete' => array('icon' => 'trash-o', 'tooltip' => __d('croogo', 'Remove this item'))
+        );
+        return isset($iconList[$name])?$iconList[$name]:array();
+    }
+
 /**
  * Convenience method to Html::script() for admin views
  *
@@ -89,35 +98,11 @@ class CroogoHelper extends AppHelper {
 			'hasChild' => array(
 				'class' => 'hasChild'
 			),
+            'iconPrefix'=>'icon-',
 			'data-target' => false,
-			'icon' => array(
-				'class' => 'fa fa-'
-			),
-			'root' => array(
-				'ul' => array(
-					'class' => 'nav nav-sidebar nav-stacked',
-				),
-				'a' => array(
-					'data-toggle' => 'collapse',
-				),
-				'li' => array()
-			),
-			'node' => array(
-				'ul' => array(
-					'class' => 'nav collapse',
-				),
-				'a' => array(
-					'data-toggle' => 'collapse',
-				),
-				'li' => array()
-			),
-			'leaf' => array(
-				'ul' => array(
-					'class' => 'nav collapse',
-				),
-				'a' => array(),
-				'li' => array()
-			)
+            'root'=>[],
+            'node'=>[],
+            'leaf'=>[]
 		), $options);
 
 		$aclPlugin = Configure::read('Site.acl_plugin');
@@ -149,9 +134,10 @@ class CroogoHelper extends AppHelper {
 			} else {
 				$type = 'leaf';
 			}
+            $options[$type] = Hash::merge(['ul'=>[],'li'=>[],'a'=>[]],$options[$type]);
 			$inA = null;
 			if ($menuEntry['icon'] != '') {
-				$inA .= $this->Html->tag('i', '', array('class' => $options['icon']['class'] . $menuEntry['icon'][0])) . ' ';
+				$inA .= $this->Html->tag('i', '', array('class' => $options['iconPrefix'] . $menuEntry['icon'][0])) . ' ';
 			}
 			$inA .= $menuEntry['title'];
 			$menuEntry['url'] = $this->url($menuEntry['url']);
@@ -420,13 +406,9 @@ class CroogoHelper extends AppHelper {
 			'method' => 'get',
 		), $options);
 		if (strcasecmp($options['method'], 'post') == 0) {
-			return $this->Html->tag('li',
-				$this->Form->postLink($title, $url, $options)
-			);
+			return $this->Form->postLink($title, $url, $options);
 		}
-		return $this->Html->tag('li',
-			$this->Html->link($title, $url, $options)
-		);
+		return $this->Html->link($title, $url, $options);
 	}
 
 /**
